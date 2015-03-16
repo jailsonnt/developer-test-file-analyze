@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +16,11 @@ public class AnalisadorRelatorioTest {
 
     @Before
     public void before() throws IOException {
-        // analisador = sua implementação
+        try {
+			this.analisador = new AnalisadorRelatorio(this.getClass().getResource("relatorio.csv").getFile());
+		} catch (ExcessaoPadrao excessao) {
+			JOptionPane.showMessageDialog(null, excessao.getMessage());
+		}
     }
 
     @Test
